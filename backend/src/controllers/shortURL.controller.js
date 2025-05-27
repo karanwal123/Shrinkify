@@ -4,14 +4,14 @@ import {
   createShortURL,
   createShortURLForUser,
 } from "../services/shortURL.service.js";
-import ShortURL from "../models/shortURL.model.js";  // ← fixed path
+import ShortURL from "../models/shortURL.model.js"; // ← fixed path
 
 export const createShortURLHandler = async (req, res) => {
   try {
-    const { url } = req.body;
+    const { originalURL } = req.body;
     const doc = req.user
-      ? await createShortURLForUser(url, req.user.id)
-      : await createShortURL(url);
+      ? await createShortURLForUser(originalURL, req.user.id)
+      : await createShortURL(originalURL);
 
     return res
       .status(201)

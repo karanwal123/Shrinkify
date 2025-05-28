@@ -4,10 +4,7 @@ import UrlForm from "../components/Url_form"; // Capitalized import to match exp
 const HomePage = () => {
   return (
     <div>
-      <h1> this is HomePage.jsx </h1>
-      <div>
-        <UrlForm />
-      </div>
+      <UrlForm />
     </div>
   );
 };

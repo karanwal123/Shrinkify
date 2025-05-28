@@ -1,18 +1,15 @@
 // src/services/shortURL.service.js
 
 import ShortURL from "../models/shortURL.model.js";
-import { ID_generator_fxn } from "../utils/ID_generator_fxn.js";
+import { ID_generator_fxn } from "../utils/helper.js";
 
-// 1) Core “make & save” helper
 async function _makeAndSave(originalURL, userId = null) {
   if (!originalURL) {
     throw new Error("`url` is required");
   }
-
   const shortURL = ID_generator_fxn();
   const data = { originalURL, shortURL };
   if (userId) data.user = userId;
-
   const doc = new ShortURL(data);
   await doc.save();
   return doc;
